@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-8">
+      <form [formGroup]="formTema" (ngSubmit)="newTema(); formTema.reset()">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputEmail4">Nombre</label>
+              <input type="text" class="form-control form-control-sm" placeholder="Nombre" formControlName="titulo" required>
+              <div [hidden]="formTema.get('titulo').valid || formTema.get('titulo').pristine"
+                  class="alert alert-danger">
+                nombre is required
+              </div> 
+            </div>
+          </div>
+          <div class="form-row">
+            
+            <div class="form-group col-md-6">
+                  <label for="inputAddress2">Apellido</label>
+                  <input type="text" class="form-control form-control-sm" placeholder="Apellido..." formControlName="asesor" required>
+                  <div [hidden]="formTema.get('asesor').valid || formTema.get('asesor').pristine"
+                      class="alert alert-danger">
+                    Apellido is required
+                  </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="inputAddress">Fecha de Nacimiento</label>
+              <input type="date" class="form-control form-control-sm" placeholder="Fecha Nacimiento" formControlName="fecha" required>
+              <div [hidden]="formTema.get('fecha').valid || formTema.get('fecha').pristine"
+                  class="alert alert-danger">
+                Fecha is required
+              </div> 
+        </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="inputPassword4">Correo Electronico</label>
+              <input type="email" class="form-control form-control-sm" placeholder="Correo..." formControlName="descripcion" required>
+              <div [hidden]="formTema.get('descripcion').valid || formTema.get('descripcion').pristine"
+                  class="alert alert-danger">
+                Correo is required
+              </div> 
+            </div>
+          </div>
+          <div class="row">
+              <div class="form-group col-md-12 text-right bd-example">
+                  <button type="button" class="btn btn-muted m-1" (click)="cancelarFormulario()">Cancelar</button>
+                  <button type="submit" class="btn btn-primary m-1" [disabled]="formTema.invalid">Guardar Tema</button>
+              </div>
+          </div>
+    </form>
+  </div>
+  <div class="col-md-4">
+    <code>
+      {{formTema.value | json}}
+    </code><br>
+    Formulario invalido:<code> {{formTema.invalid}} </code> <br>
+    Formulario Válido:<code> {{formTema.valid}} </code> <br>
+    Estado Formulario:<code> {{formTema.status}} </code> <br>
+  </div>
+</div>

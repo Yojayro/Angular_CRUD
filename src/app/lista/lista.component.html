@@ -1,0 +1,59 @@
+<div class="row">
+        <div class="col-md-12 card form-group" *ngFor="let tema of listaTemas">
+            <ng-container *ngTemplateOutlet="idSelected ===  tema.id ? thenUpdate : elseList; context: {tema: tema}"></ng-container>
+           
+        </div>
+</div>
+
+<div ></div>
+<ng-template #thenUpdate let-tema="tema">
+        <div class="card-body">
+            <div class="row">
+                <label class="col-md-1">Titulo</label>
+                <div class="col-md-11 form-group">
+                    <input  class="form-control form-control-sm" [(ngModel)]="tema.titulo">
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1">Desc.</label>
+                <div class="col-md-11 form-group">
+                    <textarea class="form-control form-control-sm" [(ngModel)]="tema.descripcion" rows="2"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1">Fecha</label>
+                <div class="col-md-11 form-group">
+                    <input class="form-control form-control-sm" [(ngModel)]="tema.fecha">
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1">Asesor</label>
+                <div class="col-md-11 form-group">
+                    <input class="form-control form-control-sm" [(ngModel)]="tema.asesor">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button type="button" class="btn btn-sm btn-default m-1" (click)="onCancel()"> Cancelar</button>
+                    <button type="button" class="btn btn-sm btn-success m-1" (click)="onSaveUpdate(tema)"> Guardar</button>
+                </div>
+            </div>
+        </div>
+</ng-template>
+<ng-template #elseList let-tema="tema">
+        <div class="card-body" >
+                <h5 class="card-title">{{tema.titulo}}</h5>
+                <p class="card-text">{{tema.descripcion}}</p>
+                <h6 class="card-subtitle mb-2 text-muted">Fecha Inicio: {{tema.fecha}}</h6>
+                <h6 class="card-subtitle mb-2 text-warning">Asesor: {{tema.asesor}}</h6>
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <button type="button" class="btn btn-sm btn-danger m-1" (click)="onDelete(tema.id)"> Eliminar</button>
+                        <button type="button" class="btn btn-sm btn-primary m-1" (click)="onUpdate(tema.id)"> Actualizar</button>
+                        <!-- <button type="button" class="btn btn-sm btn-primary m-1"
+                        *ngTemplateOutlet=" thenUpdate; context:  {tema: tema}"> Actualizar</button> -->
+                    </div>
+                </div>
+            </div>
+</ng-template>

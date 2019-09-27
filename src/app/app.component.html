@@ -1,0 +1,10 @@
+<div class="container h-100">
+  <div class="mx-auto pb-5 m-5">
+    <h3>REGISTRO CLIENTE</h3>
+        <upeu-formulario (eventData)="postTema($event)"></upeu-formulario>
+      <hr>
+        <upeu-lista [listaTemas]="listaTemas"
+                    (eventUpdate)="eventUpdate($event)"
+                    (eventDelete)="eventDelete($event)"></upeu-lista>
+    </div>
+</div>
